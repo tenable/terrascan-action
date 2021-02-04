@@ -3,7 +3,7 @@ description: 'Uses Terrascan to detect security violations on Terraform/k8s/Helm
 inputs:
   iac_dir:
     description: 'path to a directory containing one or more IaC files (default ".")'
-    required: true
+    required: false
     default: '.'
   iac_type:
     description: 'IaC type (helm, k8s, kustomize, terraform)'
