@@ -1,0 +1,43 @@
+name: 'Terrascan IaC scanner'
+description: 'Uses Terrascan to detect security violations on Terraform/k8s/Helm/Kustomize files'
+inputs:
+  iac_dir:
+    description: 'path to a directory containing one or more IaC files (default ".")'
+    required: true
+    default: '.'
+  iac_type:
+    description: 'IaC type (helm, k8s, kustomize, terraform)'
+    required: true
+  iac_version:
+    description: 'IaC version (helm: v3, k8s: v1, kustomize: v3, terraform: v12, v14)'
+    required: false
+  policy_path:
+    description: 'policy path directory for custom policies'
+    required: false
+  policy_type:
+    description: 'policy type (all, aws, azure, gcp, github, k8s) (default all)'
+    required: false
+  skip_rules:
+    description: 'one or more rules to skip while scanning (example: "ruleID1,ruleID2")'
+    required: false
+  config_path:
+    description: 'config file path'
+    required: false
+  only_warn:
+    description: 'the action will only warn and not error when violations are found'
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.iac_dir }}
+    - ${{ inputs.iac_type }}
+    - ${{ inputs.iac_version }}
+    - ${{ inputs.policy_path }}
+    - ${{ inputs.policy_type }}
+    - ${{ inputs.skip_rules }}
+    - ${{ inputs.config_path }}
+    - ${{ inputs.only_warn }}
+branding:
+  icon: 'code'
+  color: 'blue'
