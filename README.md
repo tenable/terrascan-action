@@ -36,9 +36,11 @@ jobs:
     runs-on: ubuntu-latest
     name: terrascan-action
     steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
     - name: Run Terrascan
       id: terrascan
-      uses: accurics/terrascan-action@master
+      uses: accurics/terrascan-action@main
       with:
         iac_type: 'terraform'
         iac_version: 'v14'
