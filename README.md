@@ -40,7 +40,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Run Terrascan
       id: terrascan
-      uses: accurics/terrascan-action@main
+      uses: accurics/terrascan-action@v1
       with:
         iac_type: 'terraform'
         iac_version: 'v14'

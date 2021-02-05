@@ -1,0 +1,44 @@
+name: Testing
+
+on:
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  run_action_warning:
+    name: Test action only warn
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ./
+      with:
+        iac_dir: 'test_dirs/fail/'
+        iac_type: 'terraform'
+        iac_version: 'v14'
+        policy_type: 'aws'
+        only_warn: true
+
+  run_action_no_issues:
+    name: Test run action no issues
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ./
+      with:
+        iac_dir: 'test_dirs/success/'
+        iac_type: 'terraform'
+        iac_version: 'v14'
+        policy_type: 'aws'
+        only_warn: true
+
+  codespell:
+    name: Check for spelling errors
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: codespell-project/actions-codespell@master
+      with:
+        check_filenames: true
+        check_hidden: true
+        skip: ./.git

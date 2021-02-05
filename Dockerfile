@@ -1,5 +1,5 @@
 # Dependency Image
-FROM accurics/terrascan:1.3.2 as terrascan
+FROM accurics/terrascan:1.3.1 as terrascan
 
 # Base Image
 FROM alpine:3.13.1
