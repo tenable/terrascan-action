@@ -1,9 +1,9 @@
 name: Testing
-on: [push]
-#on:
-#  pull_request:
-#    branches:
-#    - main
+
+on:
+  pull_request:
+    branches:
+    - main
 
 jobs:
   run_action_warning:
