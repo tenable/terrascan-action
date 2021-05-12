@@ -11,7 +11,7 @@ Path to a directory containing one or more IaC files. Default `"."`.
 ### `iac_version`
 IaC version (helm: v3, k8s: v1, kustomize: v3, terraform: v12, v14).
 
-### `non-recursive`
+### `non_recursive`
 Do not scan directories and modules recursively
 
 ### `policy_path`
