@@ -5,6 +5,7 @@ echo "Running Terrascan GitHub Action with the following options:"
 echo "INPUT_IAC_DIR=${INPUT_IAC_DIR}"
 echo "INPUT_IAC_TYPE=${INPUT_IAC_TYPE}"
 echo "INPUT_IAC_VERSION=${INPUT_IAC_VERSION}"
+echo "INPUT_NON_RECURSIVE=${NON_RECURSIVE}"
 echo "INPUT_POLICY_TYPE=${INPUT_POLICY_TYPE}"
 echo "INPUT_POLICY_PATH=${INPUT_POLICY_PATH}"
 echo "INPUT_SKIP_RULES=${INPUT_SKIP_RULES}"
@@ -20,6 +21,9 @@ if [ "x${INPUT_IAC_TYPE}" != "x" ]; then
 fi
 if [ "x${INPUT_IAC_VERSION}" != "x" ]; then
     args="${args} --iac-version ${INPUT_IAC_VERSION}"
+fi
+if [ "x${INPUT_NON_RECURSIVE}" != "false" ]; then
+    args="${args} --non-recursive"
 fi
 if [ "x${INPUT_POLICY_PATH}" != "x" ]; then
     args="${args} -p ${INPUT_POLICY_PATH}"
