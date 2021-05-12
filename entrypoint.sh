@@ -22,7 +22,7 @@ fi
 if [ "x${INPUT_IAC_VERSION}" != "x" ]; then
     args="${args} --iac-version ${INPUT_IAC_VERSION}"
 fi
-if [ "x${INPUT_NON_RECURSIVE}" != "false" ]; then
+if [ "x${INPUT_NON_RECURSIVE}" != "x" ]; then
     args="${args} --non-recursive"
 fi
 if [ "x${INPUT_POLICY_PATH}" != "x" ]; then
