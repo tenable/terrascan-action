@@ -11,6 +11,9 @@ Path to a directory containing one or more IaC files. Default `"."`.
 ### `iac_version`
 IaC version (helm: v3, k8s: v1, kustomize: v3, terraform: v12, v14).
 
+### `non-recursive`
+Do not scan directories and modules recursively
+
 ### `policy_path`
 Policy path directory for custom policies.
 
@@ -46,6 +49,7 @@ jobs:
         iac_version: 'v14'
         policy_type: 'aws'
         only_warn: true
+        #non_recursive:
         #iac_dir:
         #policy_path:
         #skip_rules:

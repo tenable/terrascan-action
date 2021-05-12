@@ -11,6 +11,9 @@ inputs:
   iac_version:
     description: 'IaC version (helm: v3, k8s: v1, kustomize: v3, terraform: v12, v14)'
     required: false
+  non_recursive:
+    description: 'do not scan directories and modules recursively'
+    required: false
   policy_path:
     description: 'policy path directory for custom policies'
     required: false
@@ -33,6 +36,7 @@ runs:
     - ${{ inputs.iac_dir }}
     - ${{ inputs.iac_type }}
     - ${{ inputs.iac_version }}
+    - ${{ inputs.non_recursive }}
     - ${{ inputs.policy_path }}
     - ${{ inputs.policy_type }}
     - ${{ inputs.skip_rules }}
