@@ -1,5 +1,5 @@
 # Terrascan GitHub Action
-This action runs Terrascan, a static code analyzer for infrastructure as code(IaC). Terrascan currently supports scanning of Terraform, Kubernetes, Helm, or Kustomize files for security best practices.
+This action runs Terrascan, a static code analyzer for infrastructure as code(IaC). Terrascan currently supports scanning of Terraform, CloudFormation, Kubernetes, Helm, or Kustomize files for security best practices.
 
 ## Inputs
 ### `iac_type`
@@ -46,7 +46,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Run Terrascan
       id: terrascan
-      uses: accurics/terrascan-action@v1
+      uses: accurics/terrascan-action@master
       with:
         iac_type: 'terraform'
         iac_version: 'v14'
@@ -76,7 +76,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Run Terrascan
       id: terrascan
-      uses: accurics/terrascan-action@v1
+      uses: accurics/terrascan-action@master
       with:
         iac_type: 'terraform'
         iac_version: 'v14'
