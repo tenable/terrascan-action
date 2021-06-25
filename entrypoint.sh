@@ -43,6 +43,7 @@ fi
 echo "Executing terrascan as follows:"
 echo "terrascan scan ${args}"
 terrascan scan ${args}
+res=$?
 
 if [ "x${INPUT_SARIF_UPLOAD}" != "x" ]; then
     echo "Generating SARIF file"
