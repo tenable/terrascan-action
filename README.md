@@ -1,5 +1,5 @@
 # Terrascan GitHub Action
-This action runs Terrascan, a static code analyzer for infrastructure as code(IaC) security best practices. It supports displaying the results of the scan in the GitHub repository's Security tab, when the `sarif_upload` input variable is set to true.
+This action runs Terrascan, a static code analyzer for infrastructure as code(IaC) security best practices. It supports displaying the results of the scan in the GitHub repository's Security tab under [code scanning alerts](https://docs.github.com/en/code-security/secure-coding/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning), when the `sarif_upload` input variable is set to true.
 
 ## Inputs
 ### `iac_type`
@@ -63,6 +63,8 @@ jobs:
 ## Integration with GitHub Code Scanning
 
 Using the SARIF output option, the results of the scan will be displayed in the security tab of the repository being scanned. The example below shows how to accomplish this. More information on GitHub code scanning is available [here](https://docs.github.com/en/code-security/secure-coding/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning#about-third-party-code-scanning-tools).
+
+![Image of code scanning results](code-scanning.png)
 
 ```yaml
 on: [push]
