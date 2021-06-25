@@ -1,5 +1,5 @@
 # Terrascan GitHub Action
-This action runs Terrascan, a static code analyzer for infrastructure as code(IaC). Terrascan currently supports scanning of Terraform, CloudFormation, Kubernetes, Helm, or Kustomize files for security best practices.
+This action runs Terrascan, a static code analyzer for infrastructure as code(IaC) security best practices. It supports displaying the results of the scan in the GitHub repository's Security tab, when the `sarif_upload` input variable is set to true.
 
 ## Inputs
 ### `iac_type`
@@ -60,9 +60,9 @@ jobs:
         #config_path:
 ```
 
-## Example usage with SARIF upload
+## Integration with GitHub Code Scanning
 
-Using the SARIF output option, the results of the scan will be deplayed in the security tab of the repository being scanned.
+Using the SARIF output option, the results of the scan will be displayed in the security tab of the repository being scanned. The example below shows how to accomplish this. More information on GitHub code scanning is available [here](https://docs.github.com/en/code-security/secure-coding/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning#about-third-party-code-scanning-tools).
 
 ```yaml
 on: [push]
