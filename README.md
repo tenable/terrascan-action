@@ -1,5 +1,5 @@
 # Terrascan GitHub Action
-This action runs Terrascan, a static code analyzer for infrastructure as code(IaC) security best practices. It supports displaying the results of the scan in the GitHub repository's Security tab under [code scanning alerts](https://docs.github.com/en/code-security/secure-coding/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning), when the `sarif_upload` input variable is set to true.
+This action runs Terrascan, a static code analyzer for infrastructure as code(IaC) security best practices. It supports displaying the results of the scan in the GitHub repository's Security tab under [code scanning alerts](https://docs.github.com/en/code-security/secure-coding/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning), when the `sarif_upload` input variable is included.
 
 ## Inputs
 ### `iac_type`
@@ -30,7 +30,7 @@ Config file path.
 The action will only warn and not error when violations are found.
 
 ### `sarif_upload`
-If true, a sarif file named terrascan.sarif will be generated with the results of the scan.
+If this variable is included, a sarif file named terrascan.sarif will be generated with the results of the scan.
 
 ## Example usage
 
