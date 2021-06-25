@@ -10,6 +10,7 @@ echo "INPUT_POLICY_TYPE=${INPUT_POLICY_TYPE}"
 echo "INPUT_POLICY_PATH=${INPUT_POLICY_PATH}"
 echo "INPUT_SKIP_RULES=${INPUT_SKIP_RULES}"
 echo "INPUT_CONFIG_PATH=${INPUT_CONFIG_PATH}"
+echo "INPUT_SARIF_UPLOAD=${INPUT_SARIF_UPLOAD}"
 
 # Creating arguments for terrascan
 args=""
@@ -42,6 +43,12 @@ fi
 echo "Executing terrascan as follows:"
 echo "terrascan scan ${args}"
 terrascan scan ${args}
+res=$?
+
+if [ "x${INPUT_SARIF_UPLOAD}" != "x" ]; then
+    echo "Generating SARIF file"
+    terrascan scan ${args} -o sarif > terrascan.sarif
+fi
 
 # Handling exit code
 res=$?

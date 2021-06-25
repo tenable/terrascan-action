@@ -1,5 +1,5 @@
 name: 'Terrascan IaC scanner'
-description: 'Uses Terrascan to detect security violations on Terraform/k8s/Helm/Kustomize files'
+description: 'Uses Terrascan to detect security violations on Terraform/CloudFormation/k8s/Helm/Kustomize files'
 inputs:
   iac_dir:
     description: 'path to a directory containing one or more IaC files (default ".")'
@@ -29,6 +29,9 @@ inputs:
   only_warn:
     description: 'the action will only warn and not error when violations are found'
     required: false
+  sarif_upload:
+    description: 'if true a sarif file named terrascan.sarif will be generated with the results of the scan'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -42,6 +45,7 @@ runs:
     - ${{ inputs.skip_rules }}
     - ${{ inputs.config_path }}
     - ${{ inputs.only_warn }}
+    - ${{ inputs.sarif_upload }}
 branding:
   icon: 'code'
   color: 'blue'
