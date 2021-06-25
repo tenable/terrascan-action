@@ -51,7 +51,6 @@ if [ "x${INPUT_SARIF_UPLOAD}" != "x" ]; then
 fi
 
 # Handling exit code
-res=$?
 if [ -n "${INPUT_ONLY_WARN}" ]; then
     exit 0
 else
