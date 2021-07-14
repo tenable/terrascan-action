@@ -2,7 +2,7 @@
 FROM accurics/terrascan:1.8.0 as terrascan
 
 # Base Image
-FROM alpine:3.13
+FROM alpine:3.14.0
 
 RUN apk update && \
     apk add git
