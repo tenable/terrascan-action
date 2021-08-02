@@ -32,6 +32,9 @@ The action will only warn and not error when violations are found.
 ### `sarif_upload`
 If this variable is included, a sarif file named terrascan.sarif will be generated with the results of the scan.
 
+### `verbose`
+If this variable is included, the scan will show violations with additional details (Rule Name/ID, Resource Name/Type, Violation Category)
+
 ## Example usage
 
 ```yaml
@@ -52,6 +55,7 @@ jobs:
         iac_version: 'v14'
         policy_type: 'aws'
         only_warn: true
+        verbose: true 
         #sarif_upload: true
         #non_recursive:
         #iac_dir:
