@@ -40,7 +40,7 @@ fi
 if [ "x${INPUT_CONFIG_PATH}" != "x" ]; then
     args="${args} -c ${INPUT_CONFIG_PATH}"
 fi
-if [ ${INPUT_VERBOSE} == true]
+if [ ${INPUT_VERBOSE} == true]; then 
     args="${args} -v"
 fi 
 # Executing terrascan
