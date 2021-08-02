@@ -33,7 +33,7 @@ inputs:
     description: 'if true a sarif file named terrascan.sarif will be generated with the results of the scan'
     required: false
   verbose: 
-    description: ' will show violations with details (applicable for default output)'
+    description: ' will show violations with additional details (applicable for default output)'
     required: false 
 runs:
   using: 'docker'
