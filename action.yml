@@ -32,6 +32,9 @@ inputs:
   sarif_upload:
     description: 'if true a sarif file named terrascan.sarif will be generated with the results of the scan'
     required: false
+  verbose: 
+    description: ' will show violations with details (applicable for default output)'
+    required: false 
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -46,6 +49,8 @@ runs:
     - ${{ inputs.config_path }}
     - ${{ inputs.only_warn }}
     - ${{ inputs.sarif_upload }}
+    - ${{ inputs.verbose }}
+
 branding:
   icon: 'code'
   color: 'blue'

@@ -11,6 +11,8 @@ echo "INPUT_POLICY_PATH=${INPUT_POLICY_PATH}"
 echo "INPUT_SKIP_RULES=${INPUT_SKIP_RULES}"
 echo "INPUT_CONFIG_PATH=${INPUT_CONFIG_PATH}"
 echo "INPUT_SARIF_UPLOAD=${INPUT_SARIF_UPLOAD}"
+echo "INPUT_VERBOSE=${INPUT_VERBOSE}"
+
 
 # Creating arguments for terrascan
 args=""
@@ -38,7 +40,9 @@ fi
 if [ "x${INPUT_CONFIG_PATH}" != "x" ]; then
     args="${args} -c ${INPUT_CONFIG_PATH}"
 fi
-
+if[ ${INPUT_VERBOSE} == true]
+    args="${args} -v"
+fi 
 # Executing terrascan
 echo "Executing terrascan as follows:"
 echo "terrascan scan ${args}"
