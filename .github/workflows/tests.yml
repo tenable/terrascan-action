@@ -28,7 +28,7 @@ jobs:
         iac_version: 'v14'
         policy_type: 'aws'
         only_warn: true
-        find_vulnerabilities: true
+        find_vulnerabilities: true #rm
 
   
   codespell:
