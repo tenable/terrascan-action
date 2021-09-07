@@ -12,7 +12,6 @@ jobs:
         iac_version: 'v14'
         policy_type: 'aws'
         only_warn: true
-        find_vulnerabilities: true
   
   run_action_no_issues:
     name: Test run action no issues
@@ -26,6 +25,8 @@ jobs:
         iac_version: 'v14'
         policy_type: 'aws'
         only_warn: true
+        find_vulnerabilities: true
+
   
   codespell:
     name: Check for spelling errors
