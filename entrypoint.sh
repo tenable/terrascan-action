@@ -49,7 +49,7 @@ fi
 #Executing terrascan
 echo "Executing terrascan as follows:"
 echo "terrascan scan ${args}"
-terrascan scan --find-vuln #${args}
+terrascan scan  -i terraform --find-vuln #${args}
 res=$?
 
 if [ "x${INPUT_SARIF_UPLOAD}" != "x" ]; then
