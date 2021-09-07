@@ -12,6 +12,8 @@ echo "INPUT_SKIP_RULES=${INPUT_SKIP_RULES}"
 echo "INPUT_CONFIG_PATH=${INPUT_CONFIG_PATH}"
 echo "INPUT_SARIF_UPLOAD=${INPUT_SARIF_UPLOAD}"
 echo "INPUT_VERBOSE=${INPUT_VERBOSE}"
+echo "INPUT_FIND_VULNERABILITIESE=${INPUT_FIND_VULNERABILITIES}"
+ 
 
 
 # Creating arguments for terrascan
@@ -43,7 +45,10 @@ fi
 if [ ${INPUT_VERBOSE} == true ]; then 
     args="${args} -v"
 fi 
-# Executing terrascan
+if [ ${INPUT_FIND_VULNERABILITIES} == true ]; then 
+    args="${args} --find-vuln"
+fi 
+#Executing terrascan
 echo "Executing terrascan as follows:"
 echo "terrascan scan ${args}"
 terrascan scan ${args}
