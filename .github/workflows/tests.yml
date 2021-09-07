@@ -1,44 +1,25 @@
 name: Testing
 
-on:
-  pull_request:
-    branches:
-    - main
+on: [push]
 
 jobs:
-  run_action_warning:
-    name: Test action only warn
+  terrascan_job:
     runs-on: ubuntu-latest
+    name: terrascan-action
     steps:
-    - uses: actions/checkout@v2
-    - uses: ./
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Run Terrascan
+      id: terrascan
+      uses: accurics/terrascan-action@main
       with:
-        iac_dir: 'test_dirs/fail/'
         iac_type: 'terraform'
         iac_version: 'v14'
         policy_type: 'aws'
         only_warn: true
-
-  run_action_no_issues:
-    name: Test run action no issues
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: ./
-      with:
-        iac_dir: 'test_dirs/success/'
-        iac_type: 'terraform'
-        iac_version: 'v14'
-        policy_type: 'aws'
-        only_warn: true
-
-  codespell:
-    name: Check for spelling errors
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: codespell-project/actions-codespell@master
-      with:
-        check_filenames: true
-        check_hidden: true
-        skip: ./.git
+        find_vulnerabilities: true 
+        #sarif_upload: true
+        #iac_dir:
+        #policy_path:
+        #skip_rules:
+        #config_path:
