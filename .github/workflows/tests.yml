@@ -19,7 +19,7 @@ jobs:
         #only_warn: true
         find_vulnerabilities: true #for 
         #sarif_upload: true
-        #iac_dir:
+        iac_dir: ~/Desktop/localcswork/accurics/sample-threat-model
         #policy_path:
         #skip_rules:
         #config_path:
