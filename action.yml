@@ -35,7 +35,7 @@ inputs:
   verbose: 
     description: 'will show violations with additional details (applicable for default output)'
     required: false 
-  find_vulnerabilites:
+  find_vulnerabilities:
     description: 'will display vulnerabilities for Docker images present in the IaC files being scanned'
     required: false
 runs:
