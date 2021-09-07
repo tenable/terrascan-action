@@ -17,7 +17,7 @@ jobs:
         iac_version: 'v14'
         policy_type: 'aws'
         only_warn: true
-        find_vulnerabilities: true #for testing 
+        find_vulnerabilities: true #for 
         #sarif_upload: true
         #iac_dir:
         #policy_path:
