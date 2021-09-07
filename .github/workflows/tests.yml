@@ -2,7 +2,6 @@ on: [push]
   #pull_request:
   #  branches:
   #  - main
-  
  jobs:
   run_action_warning:
     name: Test action only warn
