@@ -1,5 +1,5 @@
 on: [push]
- jobs:
+jobs:
   run_action_warning:
     name: Test action only warn
     runs-on: ubuntu-latest
