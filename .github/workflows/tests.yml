@@ -14,10 +14,10 @@ jobs:
       uses: mihirhasan/terrascan-action@find_vuln
       with:
         iac_type: 'terraform'
-        iac_version: 'v14'
-        policy_type: 'aws'
-        only_warn: true
-        #find_vulnerabilities: true #for 
+        #iac_version: 'v14'
+        #policy_type: 'aws'
+        #only_warn: true
+        find_vulnerabilities: true #for 
         #sarif_upload: true
         #iac_dir:
         #policy_path:
