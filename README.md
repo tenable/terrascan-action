@@ -65,6 +65,7 @@ jobs:
         #policy_path:
         #skip_rules:
         #config_path:
+        #find_vulnerabilities:
 ```
 
 ## Integration with GitHub Code Scanning
