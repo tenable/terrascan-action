@@ -35,6 +35,9 @@ If this variable is included, a sarif file named terrascan.sarif will be generat
 ### `verbose`
 If this variable is included, the scan will show violations with additional details (Rule Name/ID, Resource Name/Type, Violation Category)
 
+### `find_vulnerabilities`
+If this variable is included, the scan will display vulnerabilities for Docker images present in the IaC files being scanned.
+
 ## Example usage
 
 ```yaml
@@ -62,6 +65,7 @@ jobs:
         #policy_path:
         #skip_rules:
         #config_path:
+        #find_vulnerabilities:
 ```
 
 ## Integration with GitHub Code Scanning

@@ -33,8 +33,11 @@ inputs:
     description: 'if true a sarif file named terrascan.sarif will be generated with the results of the scan'
     required: false
   verbose: 
-    description: ' will show violations with additional details (applicable for default output)'
+    description: 'will show violations with additional details (applicable for default output)'
     required: false 
+  find_vulnerabilities:
+    description: 'will display vulnerabilities for Docker images present in the IaC files being scanned'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -50,6 +53,8 @@ runs:
     - ${{ inputs.only_warn }}
     - ${{ inputs.sarif_upload }}
     - ${{ inputs.verbose }}
+    - ${{ inputs.find_vulnerabilites }}
+
 
 branding:
   icon: 'code'
