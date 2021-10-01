@@ -13,6 +13,7 @@ echo "INPUT_CONFIG_PATH=${INPUT_CONFIG_PATH}"
 echo "INPUT_SARIF_UPLOAD=${INPUT_SARIF_UPLOAD}"
 echo "INPUT_VERBOSE=${INPUT_VERBOSE}"
 echo "INPUT_FIND_VULNERABILITIES=${INPUT_FIND_VULNERABILITIES}"
+echo "GITHUB_SERVER_URL"=${GITHUB_SERVER_URL}
 
 # Creating arguments for terrascan
 args=""
@@ -47,7 +48,7 @@ if [ ${INPUT_FIND_VULNERABILITIES} == true ]; then
     args="${args} --find-vuln"
 fi
 if [ "x${INPUT_GITHUB_OAUTH_TOKEN}" != "x" ]; then
-    git config --global url."https://oauth2:TOKEN@${GITHUB_SERVER_URL}".insteadOf "${GITHUB_SERVER_URL}"
+    git config --global url."https://oauth2:TOKEN@${GITHUB_SERVER_URL#"https://"}".insteadOf "${GITHUB_SERVER_URL}"
 fi
 
 #Executing terrascan
