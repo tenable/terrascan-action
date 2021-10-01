@@ -32,11 +32,17 @@ inputs:
   sarif_upload:
     description: 'if true a sarif file named terrascan.sarif will be generated with the results of the scan'
     required: false
-  verbose: 
+  verbose:
     description: 'will show violations with additional details (applicable for default output)'
-    required: false 
+    required: false
   find_vulnerabilities:
     description: 'will display vulnerabilities for Docker images present in the IaC files being scanned'
+    required: false
+  github_oauth_token:
+    description: 'will use given oauth token when authenticating to GitHub to scan IaC templates/modules'
+    required: false
+  github_url:
+    description: 'overrides the default URL used when using a github oauth token for private github installations'
     required: false
 runs:
   using: 'docker'
@@ -54,6 +60,8 @@ runs:
     - ${{ inputs.sarif_upload }}
     - ${{ inputs.verbose }}
     - ${{ inputs.find_vulnerabilites }}
+    - ${{ inputs.github_oauth_token }}
+    - ${{ inputs.github_url }}
 
 
 branding:

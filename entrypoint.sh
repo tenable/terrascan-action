@@ -40,12 +40,21 @@ fi
 if [ "x${INPUT_CONFIG_PATH}" != "x" ]; then
     args="${args} -c ${INPUT_CONFIG_PATH}"
 fi
-if [ ${INPUT_VERBOSE} == true ]; then 
+if [ ${INPUT_VERBOSE} == true ]; then
     args="${args} -v"
-fi 
-if [ ${INPUT_FIND_VULNERABILITIES} == true ]; then 
+fi
+if [ ${INPUT_FIND_VULNERABILITIES} == true ]; then
     args="${args} --find-vuln"
-fi 
+fi
+if [ "x${INPUT_GITHUB_URL}" != "x" ]; then
+    export GITHUB_URL="${INPUT_GITHUB_URL}"
+else
+    export GITHUB_URL="https://github.com"
+fi
+if [ "x${INPUT_GITHUB_OAUTH_TOKEN}" != "x" ]; then
+    git config --global url."https://oauth2:TOKEN@${GITHUB_URL}".insteadOf "${GITHUB_URL}"
+fi
+
 #Executing terrascan
 echo "Executing terrascan as follows:"
 echo "terrascan scan ${args}"
