@@ -41,9 +41,6 @@ inputs:
   github_oauth_token:
     description: 'will use given oauth token when authenticating to GitHub to scan IaC templates/modules'
     required: false
-  github_url:
-    description: 'overrides the default URL used when using a github oauth token for private github installations'
-    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -61,7 +58,6 @@ runs:
     - ${{ inputs.verbose }}
     - ${{ inputs.find_vulnerabilites }}
     - ${{ inputs.github_oauth_token }}
-    - ${{ inputs.github_url }}
 
 
 branding:
