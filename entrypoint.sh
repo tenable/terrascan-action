@@ -47,8 +47,8 @@ fi
 if [ ${INPUT_FIND_VULNERABILITIES} == true ]; then
     args="${args} --find-vuln"
 fi
-if [ "x${INPUT_GITHUB_OAUTH_TOKEN}" != "x" ]; then
-    git config --global url."https://${INPUT_GITHUB_OAUTH_TOKEN}@${GITHUB_SERVER_URL#"https://"}".insteadOf "${GITHUB_SERVER_URL}"
+if [ "x${INPUT_GITHUB_TOKEN}" != "x" ]; then
+    git config --global url."https://${INPUT_GITHUB_TOKEN}@${GITHUB_SERVER_URL#"https://"}".insteadOf "${GITHUB_SERVER_URL}"
 fi
 
 #Executing terrascan
