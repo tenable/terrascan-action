@@ -32,11 +32,14 @@ inputs:
   sarif_upload:
     description: 'if true a sarif file named terrascan.sarif will be generated with the results of the scan'
     required: false
-  verbose: 
+  verbose:
     description: 'will show violations with additional details (applicable for default output)'
-    required: false 
+    required: false
   find_vulnerabilities:
     description: 'will display vulnerabilities for Docker images present in the IaC files being scanned'
+    required: false
+  scm_token:
+    description: 'will use given access token when authenticating to provided SCM to scan IaC templates/modules'
     required: false
 runs:
   using: 'docker'
@@ -54,6 +57,7 @@ runs:
     - ${{ inputs.sarif_upload }}
     - ${{ inputs.verbose }}
     - ${{ inputs.find_vulnerabilites }}
+    - ${{ inputs.scm_token }}
 
 
 branding:

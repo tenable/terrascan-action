@@ -14,6 +14,22 @@ echo "INPUT_SARIF_UPLOAD=${INPUT_SARIF_UPLOAD}"
 echo "INPUT_VERBOSE=${INPUT_VERBOSE}"
 echo "INPUT_FIND_VULNERABILITIES=${INPUT_FIND_VULNERABILITIES}"
 
+# Retrieving SCM URL from CI variables
+if [ "x${GITHUB_SERVER_URL}" != "x" ]; then
+    # Handling GitHub
+    SCM_SERVER_URL="${GITHUB_SERVER_URL}"
+elif [ "x${CI_SERVER_URL}" != "x" ]; then
+    # Handling GitLab
+    SCM_SERVER_URL="${CI_SERVER_URL}"
+elif [ "x${BITBUCKET_GIT_HTTP_ORIGIN}" != "x" ]; then
+    # Handling Bitbucket
+    SCM_SERVER_URL="https://$(echo ${BITBUCKET_URL#"https://"} | cut -d'/' -f 1)"
+else
+    echo "WARNING: No SCM server URL found."
+fi
+
+echo "SCM_SERVER_URL=${SCM_SERVER_URL}"
+
 # Creating arguments for terrascan
 args=""
 if [ "x${INPUT_IAC_DIR}" != "x" ]; then
@@ -40,12 +56,16 @@ fi
 if [ "x${INPUT_CONFIG_PATH}" != "x" ]; then
     args="${args} -c ${INPUT_CONFIG_PATH}"
 fi
-if [ ${INPUT_VERBOSE} == true ]; then 
+if [ ${INPUT_VERBOSE} ]; then
     args="${args} -v"
-fi 
-if [ ${INPUT_FIND_VULNERABILITIES} == true ]; then 
+fi
+if [ ${INPUT_FIND_VULNERABILITIES} ]; then
     args="${args} --find-vuln"
-fi 
+fi
+if [ "x${INPUT_SCM_TOKEN}" != "x" ]; then
+    git config --global url."https://${INPUT_SCM_TOKEN}@${SCM_SERVER_URL#"https://"}".insteadOf "${SCM_SERVER_URL}"
+fi
+
 #Executing terrascan
 echo "Executing terrascan as follows:"
 echo "terrascan scan ${args}"
