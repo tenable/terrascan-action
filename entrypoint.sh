@@ -13,6 +13,22 @@ echo "INPUT_CONFIG_PATH=${INPUT_CONFIG_PATH}"
 echo "INPUT_SARIF_UPLOAD=${INPUT_SARIF_UPLOAD}"
 echo "INPUT_VERBOSE=${INPUT_VERBOSE}"
 echo "INPUT_FIND_VULNERABILITIES=${INPUT_FIND_VULNERABILITIES}"
+
+# Retrieving SCM URL from CI variables
+if [ "x${GITHUB_SERVER_URL}" != "x" ]; then
+    # Handling GitHub
+    SCM_SERVER_URL="${GITHUB_SERVER_URL}"
+elif [ "x${CI_SERVER_URL}" != "x" ]; then
+    # Handling GitLab
+    SCM_SERVER_URL="${CI_SERVER_URL}"
+elif [ "x${BITBUCKET_GIT_HTTP_ORIGIN}" != "x" ]; then
+    # Handling Bitbucket
+    SCM_SERVER_URL="https://$(echo ${BITBUCKET_URL#"https://"} | cut -d'/' -f 1)"
+else
+    echo "WARNING: No SCM server URL found."
+fi
+
+fi
 echo "SCM_SERVER_URL"=${SCM_SERVER_URL}
 
 # Creating arguments for terrascan
