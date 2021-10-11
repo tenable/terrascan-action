@@ -36,7 +36,10 @@ If this variable is included, a sarif file named terrascan.sarif will be generat
 If this variable is included, the scan will show violations with additional details (Rule Name/ID, Resource Name/Type, Violation Category)
 
 ### `find_vulnerabilities`
-If this variable is included, the scan will display vulnerabilities for Docker images present in the IaC files being scanned.
+If provided, the scan output will display vulnerabilities for Docker images present in the IaC files.
+
+### `scm_token`
+If provided, Terrascan will use the provided access token to retrieve private repositories from your source code management system.
 
 ## Example usage
 
@@ -58,7 +61,8 @@ jobs:
         iac_version: 'v14'
         policy_type: 'aws'
         only_warn: true
-        verbose: true 
+        #scm_token: ${{ secrets.ACCESS_TOKEN }}
+        #verbose: true
         #sarif_upload: true
         #non_recursive:
         #iac_dir:
