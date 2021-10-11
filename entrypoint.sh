@@ -28,7 +28,7 @@ else
     echo "WARNING: No SCM server URL found."
 fi
 
-echo "SCM_SERVER_URL"=${SCM_SERVER_URL}
+echo "SCM_SERVER_URL=${SCM_SERVER_URL}"
 
 # Creating arguments for terrascan
 args=""
