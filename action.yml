@@ -38,8 +38,8 @@ inputs:
   find_vulnerabilities:
     description: 'will display vulnerabilities for Docker images present in the IaC files being scanned'
     required: false
-  github_token:
-    description: 'will use given access token when authenticating to GitHub to scan IaC templates/modules'
+  scm_token:
+    description: 'will use given access token when authenticating to provided SCM to scan IaC templates/modules'
     required: false
 runs:
   using: 'docker'
@@ -57,7 +57,7 @@ runs:
     - ${{ inputs.sarif_upload }}
     - ${{ inputs.verbose }}
     - ${{ inputs.find_vulnerabilites }}
-    - ${{ inputs.github_token }}
+    - ${{ inputs.scm_token }}
 
 
 branding:
