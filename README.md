@@ -41,10 +41,10 @@ If provided, the scan output will display vulnerabilities for Docker images pres
 ### `scm_token`
 If provided, Terrascan will use the provided access token to retrieve private repositories from your source code management system.
 
-### `notification-webhook-url`
+### `notification_webhook_url`
 If this variable is included, the scan results and the normalized config will be sent to the specified URL. If the variable is set along with config_path, then configs from the config path will be ignored.
 
-### `notification-webhook-token`
+### `notification_webhook_token`
 Included this variable if the notification webhook url requires authentication.
 ## Example usage
 
@@ -75,8 +75,8 @@ jobs:
         #skip_rules:
         #config_path:
         #find_vulnerabilities:
-        #notification-webhook-url:
-        #notification-webhook-token:
+        #notification_webhook_url:
+        #notification_webhook_token:
 ```
 
 ## Integration with GitHub Code Scanning
@@ -109,8 +109,8 @@ jobs:
         #policy_path:
         #skip_rules:
         #config_path:
-        #notification-webhook-url:
-        #notification-webhook-token:
+        #notification_webhook_url:
+        #notification_webhook_token:
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v1
       with:

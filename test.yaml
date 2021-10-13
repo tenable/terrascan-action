@@ -22,5 +22,5 @@ jobs:
         #skip_rules:
         #config_path:
         #scm_token:
-        #notification-webhook-url:
-        #notification-webhook-token:
+        #notification_webhook_url:
+        #notification_webhook_token:

@@ -41,10 +41,10 @@ inputs:
   scm_token:
     description: 'will use given access token when authenticating to provided SCM to scan IaC templates/modules'
     required: false
-  notification-webhook-url:
+  notification_webhook_url:
     description: 'the URL where scanned report and normalized config json will be sent'
     required: false
-  notification-webhook-token:
+  notification_webhook_token:
     description: 'the auth token to call the notification webhook URL'
     required: false
 runs:
@@ -64,8 +64,8 @@ runs:
     - ${{ inputs.verbose }}
     - ${{ inputs.find_vulnerabilites }}
     - ${{ inputs.scm_token }}
-    - ${{ inputs.notification-webhook-url }}
-    - ${{ inputs.notification-webhook-token }}
+    - ${{ inputs.notification_webhook_url }}
+    - ${{ inputs.notification_webhook_token }}
 
 
 branding:
