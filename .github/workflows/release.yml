@@ -1,0 +1,24 @@
+name: release
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  # push image to Docker Hub
+  push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Terrascan Action
+      uses: actions/checkout@v2
+
+    - name: Build Terrascan Action docker image
+      run: ./scripts/docker-build.sh
+
+    - name: Login to docker hub
+      run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u accurics --password-stdin
+
+    - name: Push Terrascan Action latest tag docker image
+      run: ./scripts/docker-push-latest-tag.sh
