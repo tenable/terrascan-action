@@ -13,8 +13,7 @@ echo "INPUT_CONFIG_PATH=${INPUT_CONFIG_PATH}"
 echo "INPUT_SARIF_UPLOAD=${INPUT_SARIF_UPLOAD}"
 echo "INPUT_VERBOSE=${INPUT_VERBOSE}"
 echo "INPUT_FIND_VULNERABILITIES=${INPUT_FIND_VULNERABILITIES}"
-echo "INPUT_NOTIFICATION_WEBHOOK_URL=${INPUT_NOTIFICATION_WEBHOOK_URL}"
-echo "INPUT_NOTIFICATION_WEBHOOK_TOKEN=${INPUT_NOTIFICATION_WEBHOOK_TOKEN}"
+echo "INPUT_WEBHOOK_URL=${INPUT_WEBHOOK_URL}"
 
 # Retrieving SCM URL from CI variables
 if [ "x${GITHUB_SERVER_URL}" != "x" ]; then
@@ -67,11 +66,11 @@ fi
 if [ "x${INPUT_SCM_TOKEN}" != "x" ]; then
     git config --global url."https://${INPUT_SCM_TOKEN}@${SCM_SERVER_URL#"https://"}".insteadOf "${SCM_SERVER_URL}"
 fi
-if [ "x${INPUT_NOTIFICATION_WEBHOOK_URL}" != "x" ]; then
-    args="${args} --notification-webhook-url ${INPUT_NOTIFICATION_WEBHOOK_URL}"
+if [ "x${INPUT_WEBHOOK_URL}" != "x" ]; then
+    args="${args} --webhook-url ${INPUT_WEBHOOK_URL}"
 fi
-if [ "x${INPUT_NOTIFICATION_WEBHOOK_TOKEN}" != "x" ]; then
-    args="${args} --notification-webhook-token ${INPUT_NOTIFICATION_WEBHOOK_TOKEN}"
+if [ "x${INPUT_WEBHOOK_TOKEN}" != "x" ]; then
+    args="${args} --webhook-token ${INPUT_WEBHOOK_TOKEN}"
 fi
 #Executing terrascan
 echo "Executing terrascan as follows:"
