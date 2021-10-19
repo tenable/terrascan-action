@@ -15,25 +15,40 @@ echo "INPUT_VERBOSE=${INPUT_VERBOSE}"
 echo "INPUT_FIND_VULNERABILITIES=${INPUT_FIND_VULNERABILITIES}"
 echo "INPUT_WEBHOOK_URL=${INPUT_WEBHOOK_URL}"
 
-# Retrieving SCM URL and Repository URL from CI variables
+# Retrieving SCM URL, Repository URL and REF from CI variables
 if [ "x${GITHUB_SERVER_URL}" != "x" ]; then
     # Handling GitHub
     SCM_SERVER_URL="${GITHUB_SERVER_URL}"
     REPO_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git"
+
+    if [ "x${GITHUB_REF}" != "x" ]; then
+        REF_NAME="$(echo ${GITHUB_REF#refs/heads/})"
+    else
+        REF_NAME="$(echo ${GITHUB_HEAD_REF#refs/heads/})"
+    fi
 elif [ "x${CI_SERVER_URL}" != "x" ]; then
     # Handling GitLab
     SCM_SERVER_URL="${CI_SERVER_URL}"
     REPO_URL="${CI_REPOSITORY_URL}"
+    REF_NAME="${CI_COMMIT_REF_NAME}"
+
 elif [ "x${BITBUCKET_GIT_HTTP_ORIGIN}" != "x" ]; then
     # Handling Bitbucket
     SCM_SERVER_URL="https://$(echo ${BITBUCKET_GIT_HTTP_ORIGIN#"http://"} | cut -d'/' -f 1)"
     REPO_URL="${SCM_SERVER_URL}/${BITBUCKET_REPO_FULL_NAME}"
+    
+    if [ "x${BITBUCKET_BRANCH}" != "x" ]; then
+        REF_NAME="${BITBUCKET_BRANCH}"
+    else
+        REF_NAME="${BITBUCKET_TAG}"
+    fi
 else
     echo "WARNING: No SCM server URL found."
 fi
 
 echo "SCM_SERVER_URL=${SCM_SERVER_URL}"
 echo "REPO_URL=${REPO_URL}"
+echo "REF_NAME=${REF_NAME}"
 
 # Creating arguments for terrascan
 args=""
@@ -78,7 +93,9 @@ if [ "x${INPUT_WEBHOOK_TOKEN}" != "x" ]; then
 fi
 if [ "x${REPO_URL}" != "x" ]; then
     args="${args} --repo-url ${REPO_URL}"
+    args="${args} --repo-ref ${REF_NAME}"
 fi
+
 #Executing terrascan
 echo "Executing terrascan as follows:"
 echo "terrascan scan ${args}"
