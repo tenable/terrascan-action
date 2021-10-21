@@ -46,6 +46,7 @@ If this variable is included, the scan results and the normalized config will be
 
 ### `webhook_token`
 Included this variable if the notification webhook url requires authentication.
+
 ## Example usage
 
 ```yaml
