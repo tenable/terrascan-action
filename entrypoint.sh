@@ -29,13 +29,13 @@ if [ "x${GITHUB_SERVER_URL}" != "x" ]; then
 elif [ "x${CI_SERVER_URL}" != "x" ]; then
     # Handling GitLab
     SCM_SERVER_URL="${CI_SERVER_URL}"
-    REPO_URL="${CI_REPOSITORY_URL}"
+    REPO_URL="https://${CI_REPOSITORY_URL#https:*@}"
     REF_NAME="${CI_COMMIT_REF_NAME}"
 
 elif [ "x${BITBUCKET_GIT_HTTP_ORIGIN}" != "x" ]; then
     # Handling Bitbucket
     SCM_SERVER_URL="https://$(echo ${BITBUCKET_GIT_HTTP_ORIGIN#"http://"} | cut -d'/' -f 1)"
-    REPO_URL="${SCM_SERVER_URL}/${BITBUCKET_REPO_FULL_NAME}"
+    REPO_URL="${SCM_SERVER_URL}/${BITBUCKET_REPO_FULL_NAME}.git"
     
     if [ "x${BITBUCKET_BRANCH}" != "x" ]; then
         REF_NAME="${BITBUCKET_BRANCH}"
