@@ -5,6 +5,6 @@ set -o nounset
 set -o pipefail
 
 GIT_COMMIT=$(git rev-parse --short HEAD 2>/dev/null)
-DOCKER_REPO="nasirrabbani/terrascan-action"
+DOCKER_REPO="accurics/terrascan-action"
 
 docker build -t ${DOCKER_REPO}:${GIT_COMMIT} .
