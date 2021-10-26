@@ -18,7 +18,7 @@ jobs:
       run: ./scripts/docker-build.sh
 
     - name: Login to docker hub
-      run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u terrascan --password-stdin
+      run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u accurics --password-stdin
 
     - name: Push Terrascan Action latest tag docker image
       run: ./scripts/docker-push-latest-tag.sh
