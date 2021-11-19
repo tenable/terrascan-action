@@ -5,7 +5,7 @@ FROM accurics/terrascan:1.12.0 as terrascan
 FROM alpine:3.14.2
 
 RUN apk update && \
-    apk add --no-cache git
+    apk add --no-cache git openssh
 
 # Install Terrascan
 COPY --from=terrascan /go/bin/terrascan /usr/bin/
