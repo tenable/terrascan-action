@@ -101,6 +101,17 @@ echo "Executing terrascan as follows:"
 echo "terrascan scan ${args}"
 terrascan scan ${args}
 res=$?
+echo "::set-output name=err::$res"
+
+# Executing terrascan
+echo "Save stodut"
+command="terrascan scan ${args}"
+result=$( $command 2>&1)
+result="${result//'%'/'%25'}"
+result="${result//$'\n'/'%0A'}"
+result="${result//$'\r'/'%0D'}"
+
+echo "::set-output name=result::$result"
 
 if [ "x${INPUT_SARIF_UPLOAD}" != "x" ]; then
     echo "Generating SARIF file"
