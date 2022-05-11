@@ -1,9 +1,14 @@
 # Terrascan GitHub Action
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=accurics_terrascan-action&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=accurics_terrascan-action)
 
-This action runs Terrascan, a static code analyzer for infrastructure as code(IaC) security best practices. It supports displaying the results of the scan in the GitHub repository's Security tab under [code scanning alerts](https://docs.github.com/en/code-security/secure-coding/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning), when the `sarif_upload` input variable is included.
+This action runs Terrascan, the infrastructure as code (IaC) scanner for security best practices. It supports displaying the results of the scan in the GitHub repository's Security tab under [code scanning alerts](https://docs.github.com/en/code-security/secure-coding/automatically-scanning-your-code-for-vulnerabilities-and-errors/about-code-scanning), when the `sarif_upload` input variable is included.
 
-## Inputs
+## Where to get help
+
+* To learn more about Terrascan's features and capabilities, see the documentation portal: https://runterrascan.io
+* Join our community on [Discord](https://discord.gg/ScUPMzyG3n)
+
+## Inputs for the GitHub Action
 ### `iac_type`
 **Required** IaC type (helm, k8s, kustomize, terraform).
 
@@ -63,7 +68,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Run Terrascan
       id: terrascan
-      uses: accurics/terrascan-action@main
+      uses: tenable/terrascan-action@main
       with:
         iac_type: 'terraform'
         iac_version: 'v14'
@@ -100,7 +105,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Run Terrascan
       id: terrascan
-      uses: accurics/terrascan-action@main
+      uses: tenable/terrascan-action@main
       with:
         iac_type: 'terraform'
         iac_version: 'v14'
@@ -119,3 +124,7 @@ jobs:
       with:
         sarif_file: terrascan.sarif
 ```
+
+## Using Docker Image
+
+This repository publishes the [tenable/terrascan-action](https://hub.docker.com/r/tenable/terrascan-action) Docker image. The image can be used to easily integrate Terrascan with the inputs accepted by GitHub Action into other CI/CD systems.
