@@ -104,7 +104,7 @@ res=$?
 
 if [ "x${INPUT_SARIF_UPLOAD}" != "x" ]; then
     echo "Generating SARIF file"
-    terrascan scan ${args} -o sarif > terrascan.sarif
+    terrascan scan ${args} -o github-sarif > terrascan.sarif
 fi
 
 # Handling exit code
