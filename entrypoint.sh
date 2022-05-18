@@ -36,7 +36,7 @@ elif [ "x${BITBUCKET_GIT_HTTP_ORIGIN}" != "x" ]; then
     # Handling Bitbucket
     SCM_SERVER_URL="https://$(echo ${BITBUCKET_GIT_HTTP_ORIGIN#"http://"} | cut -d'/' -f 1)"
     REPO_URL="${SCM_SERVER_URL}/${BITBUCKET_REPO_FULL_NAME}.git"
-    
+
     if [ "x${BITBUCKET_BRANCH}" != "x" ]; then
         REF_NAME="${BITBUCKET_BRANCH}"
     else
@@ -76,10 +76,10 @@ fi
 if [ "x${INPUT_CONFIG_PATH}" != "x" ]; then
     args="${args} -c ${INPUT_CONFIG_PATH}"
 fi
-if [ ${INPUT_VERBOSE} ]; then 
+if [ ${INPUT_VERBOSE} ]; then
     args="${args} -v"
-fi 
-if [ ${INPUT_FIND_VULNERABILITIES} ]; then 
+fi
+if [ ${INPUT_FIND_VULNERABILITIES} ]; then
     args="${args} --find-vuln"
 fi
 if [ "x${INPUT_SCM_TOKEN}" != "x" ]; then
@@ -99,8 +99,10 @@ fi
 #Executing terrascan
 echo "Executing terrascan as follows:"
 echo "terrascan scan ${args}"
-terrascan scan ${args}
+terrascan scan ${args} --log-output-dir $(pwd)
 res=$?
+cat scan-result.txt >> $GITHUB_STEP_SUMMARY
+
 
 if [ "x${INPUT_SARIF_UPLOAD}" != "x" ]; then
     echo "Generating SARIF file"
