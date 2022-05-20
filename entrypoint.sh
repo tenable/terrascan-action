@@ -126,7 +126,7 @@ terrascan scan -i terraform -o json | \
     jq -r '.results.violations[] | {file:.file, line:.line, description:.description} | join(":")' | \
     reviewdog -efm="%f:%l:%m" \
         -name="terrascan" \
-        -reporter="${github-pr-check}"
+        -reporter="github-check"
 
 # Handling exit code
 if [ -n "${INPUT_ONLY_WARN}" ]; then
