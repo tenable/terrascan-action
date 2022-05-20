@@ -109,6 +109,25 @@ if [ "x${INPUT_SARIF_UPLOAD}" != "x" ]; then
     terrascan scan ${args} -o github-sarif > terrascan.sarif
 fi
 
+if [ "x${INPUT_SARIF_UPLOAD}" != "x" ]; then
+    echo "Generating SARIF file"
+    terrascan scan ${args} -o github-sarif > terrascan.sarif
+fi
+
+# Use reviewdog for comments
+if [ -n "${GITHUB_WORKSPACE}" ] ; then
+  cd "${GITHUB_WORKSPACE}/${INPUT_WORKDIR}" || exit
+  git config --global --add safe.directory "${GITHUB_WORKSPACE}" || exit 1
+fi
+
+export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_SCM_TOKEN}"
+
+terrascan scan -i terraform -o json | \
+    jq -r '.results.violations[] | {file:.file, line:.line, description:.description} | join(":")' | \
+    reviewdog -efm="%f:%l:%m" \
+        -name="terrascan" \
+        -reporter="${github-pr-check}"
+
 # Handling exit code
 if [ -n "${INPUT_ONLY_WARN}" ]; then
     exit 0
