@@ -1,5 +1,5 @@
 # Dependency Image
-FROM tenable/terrascan:1.15.0 as terrascan
+FROM tenable/terrascan:1.15.1 as terrascan
 
 # Base Image
 FROM alpine:3.15.4
