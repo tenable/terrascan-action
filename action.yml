@@ -5,6 +5,9 @@ inputs:
     description: 'path to a directory containing one or more IaC files (default ".")'
     required: false
     default: '.'
+  iac_file:
+    description: 'path to a single IaC file'
+    required: false
   iac_type:
     description: 'IaC type (helm, k8s, kustomize, terraform)'
     required: true
@@ -52,6 +55,7 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.iac_dir }}
+    - ${{ inputs.iac_file }}
     - ${{ inputs.iac_type }}
     - ${{ inputs.iac_version }}
     - ${{ inputs.non_recursive }}
