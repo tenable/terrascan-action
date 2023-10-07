@@ -96,7 +96,7 @@ if [ "x${REPO_URL}" != "x" ]; then
     args="${args} --repo-ref ${REF_NAME}"
 fi
 
-## Gererate action outputs
+## Generate action outputs
 echo "::set-output name=err::$res"
 command="terrascan scan ${args}"
 result=$( $command 2>&1)
