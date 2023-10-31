@@ -3,6 +3,7 @@
 # Displaying options
 echo "Running Terrascan GitHub Action with the following options:"
 echo "INPUT_IAC_DIR=${INPUT_IAC_DIR}"
+echo "INPUT_IAC_FILE=${INPUT_IAC_FILE}"
 echo "INPUT_IAC_TYPE=${INPUT_IAC_TYPE}"
 echo "INPUT_IAC_VERSION=${INPUT_IAC_VERSION}"
 echo "INPUT_NON_RECURSIVE=${NON_RECURSIVE}"
@@ -54,6 +55,9 @@ echo "REF_NAME=${REF_NAME}"
 args=""
 if [ "x${INPUT_IAC_DIR}" != "x" ]; then
     args="${args} -d ${INPUT_IAC_DIR}"
+fi
+if [ "x${INPUT_IAC_FILE}" != "x" ]; then
+    args="${args} -f ${INPUT_IAC_FILE}"
 fi
 if [ "x${INPUT_IAC_TYPE}" != "x" ]; then
     args="${args} -i ${INPUT_IAC_TYPE}"
