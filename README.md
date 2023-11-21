@@ -65,7 +65,7 @@ jobs:
     name: terrascan-action
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
     - name: Run Terrascan
       id: terrascan
       uses: tenable/terrascan-action@main
@@ -102,7 +102,7 @@ jobs:
     name: terrascan-action
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
     - name: Run Terrascan
       id: terrascan
       uses: tenable/terrascan-action@main
