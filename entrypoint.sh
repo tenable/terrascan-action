@@ -97,14 +97,14 @@ if [ "x${REPO_URL}" != "x" ]; then
 fi
 
 ## Generate action outputs
-echo "::set-output name=err::$res"
+echo "{err}=${res}" >> $GITHUB_OUTPUT
 command="terrascan scan ${args}"
 result=$( $command 2>&1)
 result="${result//'%'/'%25'}"
 result="${result//$'\n'/'%0A'}"
 result="${result//$'\r'/'%0D'}"
 
-echo "::set-output name=result::$result"
+echo "{result}=${result}" >> $GITHUB_OUTPUT
 
 #Executing terrascan
 echo "Executing terrascan as follows:"
