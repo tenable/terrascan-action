@@ -120,7 +120,7 @@ jobs:
         #webhook_url:
         #webhook_token:
     - name: Upload SARIF file
-      uses: github/codeql-action/upload-sarif@v1
+      uses: github/codeql-action/upload-sarif@v2
       with:
         sarif_file: terrascan.sarif
 ```
