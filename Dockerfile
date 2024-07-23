@@ -2,7 +2,7 @@
 FROM tenable/terrascan:1.17.0 as terrascan
 
 # Base Image
-FROM alpine:3.16
+FROM alpine:3.19
 
 RUN apk update && \
     apk add --no-cache git openssh
